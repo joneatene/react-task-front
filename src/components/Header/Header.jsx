@@ -4,8 +4,8 @@ import * as S from "./Header.style";
 const Header = () => (
     <header>
         <S.NavBlock>
-            <S.NavLink>Register</S.NavLink>
-            <S.NavLink>Login</S.NavLink>
+            <S.NavLink to="/register">Register</S.NavLink>
+            <S.NavLink to="/">Login</S.NavLink>
         </S.NavBlock>
     </header>
 );
