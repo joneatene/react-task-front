@@ -5,7 +5,18 @@ import * as S from "./Form.style";
 import Button from "../Button/Button";
 
 const Form = ({type}) => {
+
+    const fetchFunction = (email, password) => {
+        fetch(`https://react-task-back-xtd2r.ondigitalocean.app/${type}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({email, password})
+        }).then(res => res.json()).then(data => console.log(data));
+    }
     const validation = (e) => {
+        e.preventDefault();
         const email = e.target.elements.email.value.trim();
         const password = e.target.elements.password.value.trim();
 
@@ -17,7 +28,7 @@ const Form = ({type}) => {
               });
              
               schema.isValid({ email, password }).then((data) => {
-                data ? alert("All good") : alert("Bad email or password");
+                data ? fetchFunction(email, password) : alert("Bad email or password");
               });
 
         } else {
