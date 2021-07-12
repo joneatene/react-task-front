@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const TitleBlock = styled.div`
+  border-bottom: 1px solid #b7b7a4;
   width: fit-content;
   margin: 0 auto;
-  border-bottom: 1px solid #b7b7a4;
+  margin-bottom: 2rem;
 `;
 
 export const Title = styled.h2`
