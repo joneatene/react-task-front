@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 
 const Form = ({ type }) => {
   const fetchFunction = (email, password) => {
-    fetch(`https://react-task-back-xtd2r.ondigitalocean.app/${type}`, {
+    fetch(`https://react-task-back-xtd2r.ondigitalocean.app/auth/${type}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +14,12 @@ const Form = ({ type }) => {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (type === "login") {
+          localStorage.setItem("token", data.token);
+        }
+      });
   };
 
   const validation = (e) => {
