@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import * as Yup from "yup";
 import * as S from "./Form.style";
 import Button from "../Button/Button";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
 
 const Form = ({ type }) => {
+  const authContext = useContext(AuthContext);
+  const history = useHistory();
   const fetchFunction = (email, password) => {
     fetch(`https://react-task-back-xtd2r.ondigitalocean.app/auth/${type}`, {
       method: "POST",
@@ -15,9 +19,11 @@ const Form = ({ type }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (type === "login") {
-          localStorage.setItem("token", data.token);
+          if (data.token) {
+            authContext.setAuth(data.token);
+            history.push("/dashboard");
+          }
         }
       });
   };
