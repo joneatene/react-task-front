@@ -21,7 +21,6 @@ const Dashboard = () => {
       .then((result) => setData(result));
   }, [authContext.auth]);
 
-  console.log(data);
   return (
     <div className="wrapper">
       <S.FlexContainer>
