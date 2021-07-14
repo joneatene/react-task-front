@@ -48,6 +48,16 @@ const Form = ({ type }) => {
   };
   return (
     <form onSubmit={validation}>
+      {type === "register" && (
+        <S.Input
+          type="text"
+          name="name"
+          minLength="2"
+          maxLength="255"
+          placeholder="First Name"
+          required
+        />
+      )}
       <S.Input
         type="email"
         name="email"
