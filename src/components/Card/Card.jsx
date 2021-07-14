@@ -16,7 +16,7 @@ const Card = ({ image, score }) => (
 
 Card.propTypes = {
   image: PropTypes.string,
-  score: PropTypes.number,
+  score: PropTypes.string,
 };
 
 export default Card;
