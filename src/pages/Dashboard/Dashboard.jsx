@@ -20,7 +20,13 @@ const Dashboard = () => {
       <S.FlexContainer>
         {data &&
           data.map((item) => {
-            return <Card image={item.image} score={Number(item.score)} key={item.id} />;
+            return (
+              <Card
+                image={item.image}
+                score={Number(item.score)}
+                key={item.id}
+              />
+            );
           })}
       </S.FlexContainer>
     </div>
